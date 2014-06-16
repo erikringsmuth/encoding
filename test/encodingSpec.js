@@ -42,7 +42,7 @@ describe('base64ToHexString(base64String)', function() {
     var actual = encoding.base64ToHexString('97yD9DBThCSxMpjmqm+xQ+9NWaFJRhdZl0edvC0aPNg=');
 
     // assert
-    assert.deepEqual(actual, expected);
+    assert.equal(actual, expected);
   });
 });
 
@@ -117,7 +117,7 @@ describe('hexStringToBase64(hexString)', function() {
     var actual = encoding.hexStringToBase64('f7bc83f430538424b13298e6aa6fb143ef4d59a14946175997479dbc2d1a3cd8');
 
     // assert
-    assert.deepEqual(actual, expected);
+    assert.equal(actual, expected);
   });
 });
 
