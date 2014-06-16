@@ -19,12 +19,26 @@
       }
       return result;
     },
+    base64ToByteArray: function (base64String) {
+      var decodedString = atob(base64String);
+      var result = new Uint8Array(decodedString.length);
+      for (var i = 0; i < decodedString.length; i++) {
+        result[i] = decodedString.charCodeAt(i);
+      }
+      return result;
+    },
+    base64ToHexString: function (base64String) {
+      return encoding.byteArrayToHexString(encoding.base64ToByteArray(base64String));
+    },
     byteArrayToAscii: function (byteArray) {
       var result = new Array(byteArray.length);
       for (var i = 0; i < byteArray.length; i++) {
         result[i] = String.fromCharCode(byteArray[i]);
       }
       return result.join('');
+    },
+    byteArrayToBase64: function (byteArray) {
+      return btoa(encoding.byteArrayToAscii(byteArray));
     },
     byteArrayToHexArray: function (byteArray) {
       return Array.prototype.map.call(byteArray, encoding.byteAsHex);
@@ -37,6 +51,9 @@
     },
     hexArrayToString: function (hexArray) {
       return hexArray.join('');
+    },
+    hexStringToBase64: function (hexString) {
+      return encoding.byteArrayToBase64(encoding.hexStringToByteArray(hexString));
     },
     hexStringToByteArray: function (hexString) {
       var result = new Uint8Array(hexString.length / 2);

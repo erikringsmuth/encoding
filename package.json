@@ -20,6 +20,8 @@
     "gulp": "~3.6.0",
     "gulp-mocha": "~0.4.1",
     "gulp-jshint": "~1.5.3",
-    "jshint-stylish": "~0.1.5"
+    "jshint-stylish": "~0.1.5",
+    "atob": "^1.1.2",
+    "btoa": "^1.1.2"
   }
 }
