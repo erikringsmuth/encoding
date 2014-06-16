@@ -1,0 +1,25 @@
+{
+  "name": "encoding",
+  "author": "Erik Ringsmuth <erik.ringsmuth@gmail.com>",
+  "license": "MIT",
+  "version": "0.0.0",
+  "description": "encoding utility",
+  "main": "encoding.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erikringsmuth/encoding.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "node"
+  ],
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "gulp": "~3.6.0",
+    "gulp-mocha": "~0.4.1",
+    "gulp-jshint": "~1.5.3",
+    "jshint-stylish": "~0.1.5"
+  }
+}
