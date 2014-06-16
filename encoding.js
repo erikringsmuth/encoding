@@ -19,16 +19,11 @@
       }
       return result;
     },
-    base64ToByteArray: function (base64String) {
-      var decodedString = atob(base64String);
-      var result = new Uint8Array(decodedString.length);
-      for (var i = 0; i < decodedString.length; i++) {
-        result[i] = decodedString.charCodeAt(i);
-      }
-      return result;
+    base64ToByteArray: function (base64) {
+      return encoding.asciiToByteArray(atob(base64));
     },
-    base64ToHexString: function (base64String) {
-      return encoding.byteArrayToHexString(encoding.base64ToByteArray(base64String));
+    base64ToHex: function (base64) {
+      return encoding.byteArrayToHex(encoding.base64ToByteArray(base64));
     },
     byteArrayToAscii: function (byteArray) {
       var result = new Array(byteArray.length);
@@ -40,25 +35,19 @@
     byteArrayToBase64: function (byteArray) {
       return btoa(encoding.byteArrayToAscii(byteArray));
     },
-    byteArrayToHexArray: function (byteArray) {
-      return Array.prototype.map.call(byteArray, encoding.byteAsHex);
-    },
-    byteArrayToHexString: function (byteArray) {
-      return encoding.hexArrayToString(encoding.byteArrayToHexArray(byteArray));
+    byteArrayToHex: function (byteArray) {
+      return Array.prototype.map.call(byteArray, encoding.byteAsHex).join('');
     },
     byteAsHex: function (byte) {
       return ('0' + byte.toString(16)).substr(-2);
     },
-    hexArrayToString: function (hexArray) {
-      return hexArray.join('');
+    hexToBase64: function (hex) {
+      return encoding.byteArrayToBase64(encoding.hexToByteArray(hex));
     },
-    hexStringToBase64: function (hexString) {
-      return encoding.byteArrayToBase64(encoding.hexStringToByteArray(hexString));
-    },
-    hexStringToByteArray: function (hexString) {
-      var result = new Uint8Array(hexString.length / 2);
-      for (var i = 0; i < hexString.length / 2; i++) {
-        result[i] = parseInt(hexString.substr(i * 2, 2), 16);
+    hexToByteArray: function (hex) {
+      var result = new Uint8Array(hex.length / 2);
+      for (var i = 0; i < hex.length / 2; i++) {
+        result[i] = parseInt(hex.substr(i * 2, 2), 16);
       }
       return result;
     },
