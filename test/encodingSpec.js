@@ -146,3 +146,29 @@ describe('xorByteArrays(array1, array2, ...)', function() {
     assert.deepEqual(actual, expected);
   });
 });
+
+describe('byteArrayToPgpWordList(byteArray)', function() {
+  it('should convert the byte array to a PGP word list', function() {
+    // arrange
+    var expected = 'hockey glossary flatfoot impartial highchair guitarist indoors inertia bison hydraulic frighten holiness gremlin impartial freedom gravity bison hemisphere flagpole hurricane flatfoot impartial highchair guitarist indoors inertia';
+
+    // act
+    var actual = encoding.byteArrayToPgpWordList(new Uint8Array([115, 101, 99, 117, 114, 105, 116, 121, 32, 116, 104, 114, 111, 117, 103, 104, 32, 111, 98, 115, 99, 117, 114, 105, 116, 121]));
+
+    // assert
+    assert.deepEqual(actual, expected);
+  });
+});
+
+describe('pgpWordListToByteArray(wordList)', function() {
+  it('should convert the PGP word list to a byte array', function() {
+    // arrange
+    var expected = new Uint8Array([115, 101, 99, 117, 114, 105, 116, 121, 32, 116, 104, 114, 111, 117, 103, 104, 32, 111, 98, 115, 99, 117, 114, 105, 116, 121]);
+
+    // act
+    var actual = encoding.pgpWordListToByteArray('hockey glossary flatfoot impartial highchair guitarist indoors inertia bison hydraulic frighten holiness gremlin impartial freedom gravity bison hemisphere flagpole hurricane flatfoot impartial highchair guitarist indoors inertia');
+
+    // assert
+    assert.deepEqual(actual, expected);
+  });
+});
